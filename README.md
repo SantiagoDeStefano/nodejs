@@ -2,11 +2,14 @@
 
 A full-featured Twitter/X clone built with **Node.js + Express** (backend) and **React + Vite** (frontend), featuring real-time messaging, tweet management, media uploads, and user interactions.
 
+![System Architecture](images/nodejs-high-level-architecture.png)
+
 ---
 
 ## 🌟 Features
 
 ### User Management
+
 - User registration and authentication with JWT
 - Email verification system
 - Password reset functionality
@@ -14,6 +17,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - Follow/unfollow system with Twitter Circle (private network)
 
 ### Tweets & Content
+
 - Create, read, update, and delete tweets
 - Tweet types: Tweet, Retweet, Comment, QuoteTweet
 - Audience control: Public, Followers, Twitter Circle, Private
@@ -22,6 +26,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - View tracking (guest and user views)
 
 ### Social Features
+
 - **Likes** - Like/unlike tweets
 - **Bookmarks** - Save tweets for later
 - **Comments & Replies** - Thread-based conversations
@@ -29,12 +34,14 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - **Real-time Messaging** - Socket.io powered conversations
 
 ### Media Management
+
 - Image upload and processing with Sharp
 - Video upload with FFmpeg transcoding
 - AWS S3 integration for cloud storage
 - Video status tracking
 
 ### Security & Performance
+
 - JWT-based authentication with access/refresh tokens
 - Rate limiting (100 requests per 15 minutes)
 - Password encryption
@@ -43,6 +50,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - Email verification for account security
 
 ### API Documentation
+
 - Swagger UI integration at `/node-js/api-docs`
 - OpenAPI specification in `twitter-swagger.yaml`
 
@@ -51,6 +59,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 ## 🛠️ Tech Stack
 
 ### Backend
+
 - **Runtime**: Node.js 20.x
 - **Language**: TypeScript
 - **Framework**: Express.js
@@ -65,6 +74,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - **Security**: Helmet, CORS
 
 ### Frontend
+
 - **Framework**: React 19
 - **Build Tool**: Vite
 - **Language**: JavaScript (JSX)
@@ -74,6 +84,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 - **Video Player**: Vidstack React, HLS.js
 
 ### DevOps
+
 - **Containerization**: Docker & Docker Compose
 - **Package Manager**: npm
 - **Code Quality**: ESLint, Prettier
@@ -117,6 +128,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - **Node.js** 20.x or higher
 - **MongoDB** (local or cloud)
 - **npm** or **yarn**
@@ -126,17 +138,19 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 ### Backend Setup
 
 1. **Install Dependencies**
+
    ```bash
    npm install
    ```
 
 2. **Environment Configuration**
    Create `.env.development` (or `.env.production`, `.env.staging`):
+
    ```env
    # Server
    PORT=4000
    HOST=localhost
-   
+
    # Database
    DB_NAME=twitter
    DB_USERNAME=your_mongo_user
@@ -150,7 +164,7 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
    DB_BOOKMARKS_COLLECTION=bookmarks
    DB_LIKES_COLLECTION=likes
    DB_CONVERSATIONS_COLLECTION=conversations
-   
+
    # JWT Secrets (generate with: openssl rand -base64 32)
    JWT_SECRET_ACCESS_TOKEN=your_access_token_secret
    JWT_SECRET_REFRESH_TOKEN=your_refresh_token_secret
@@ -158,20 +172,20 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
    JWT_SECRET_FORGOT_PASSWORD_TOKEN=your_forgot_password_token_secret
    JWT_DEFAULT_SECRET_TOKEN=your_default_secret_token
    PASSWORD_SECRET=your_password_secret
-   
+
    # Token Expiration
    ACCESS_TOKEN_EXPIRES_IN=1h
    REFRESH_TOKEN_EXPIRES_IN=30d
    EMAIL_VERIFY_TOKEN_EXPIRES_IN=7d
    FORGOT_PASSWORD_TOKEN_EXPIRES_IN=15m
-   
+
    # Google OAuth (optional)
    GOOGLE_CLIENT_ID=your_google_client_id
    GOOGLE_CLIENT_SECRET=your_google_client_secret
    GOOGLE_REDIRECT_URI=your_redirect_uri
    CLIENT_REDIRECT_CALLBACK=your_client_callback_url
    CLIENT_URL=http://localhost:5173
-   
+
    # AWS Configuration
    AWS_ACCESS_KEY_ID=your_access_key
    AWS_SECRET_ACCESS_KEY=your_secret_key
@@ -181,11 +195,13 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
    ```
 
 3. **Build the Project**
+
    ```bash
    npm run build
    ```
 
 4. **Run in Development**
+
    ```bash
    npm run dev           # Development mode
    npm run dev:prod      # Production mode
@@ -202,15 +218,18 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 ### Frontend Setup
 
 1. **Install Dependencies**
+
    ```bash
    cd client
    npm install
    ```
 
 2. **Run Development Server**
+
    ```bash
    npm run dev
    ```
+
    Frontend will be available at `http://localhost:5173`
 
 3. **Build for Production**
@@ -223,16 +242,19 @@ A full-featured Twitter/X clone built with **Node.js + Express** (backend) and *
 ## 🐳 Docker Setup
 
 ### Using Docker Compose
+
 ```bash
 docker-compose up --build
 ```
 
 This starts:
+
 - **Backend**: `http://localhost:4000`
 - **API Docs**: `http://localhost:4000/node-js/api-docs`
 - **Uploads**: Mounted to `/d/DockerVolume`
 
 ### Building Docker Image Manually
+
 ```bash
 docker build -t twitter-app:latest .
 docker run -p 4000:4000 \
@@ -247,11 +269,13 @@ docker run -p 4000:4000 \
 ## 📚 API Endpoints
 
 Access the full API documentation via Swagger UI:
+
 ```
 http://localhost:4000/node-js/api-docs
 ```
 
 ### Main Routes
+
 - `/users` - User management (register, login, profile)
 - `/tweets` - Tweet operations (CRUD)
 - `/medias` - Media upload and processing
@@ -273,7 +297,9 @@ The backend uses **JWT-based authentication** with multiple token types:
 4. **Forgot Password Token** - For password reset (15 minutes)
 
 ### Protected Routes
+
 Most API endpoints require a valid access token in the `Authorization` header:
+
 ```
 Authorization: Bearer <access_token>
 ```
@@ -283,6 +309,7 @@ Authorization: Bearer <access_token>
 ## 📝 Code Quality
 
 ### Linting & Formatting
+
 ```bash
 # Check code style
 npm run lint
@@ -302,6 +329,7 @@ npm run prettier:fix
 ## 🗄️ Database Collections
 
 MongoDB collections structure:
+
 - **users** - User accounts and profiles
 - **refresh_tokens** - Token management
 - **followers** - Follow relationships
@@ -317,6 +345,7 @@ MongoDB collections structure:
 ## 📦 Key Dependencies
 
 ### Backend
+
 - `express` - Web framework
 - `mongodb` - Database driver
 - `jsonwebtoken` - JWT authentication
@@ -327,6 +356,7 @@ MongoDB collections structure:
 - `express-validator` - Input validation
 
 ### Frontend
+
 - `react` - UI library
 - `react-router-dom` - Routing
 - `socket.io-client` - WebSocket client
@@ -339,6 +369,7 @@ MongoDB collections structure:
 ## ⚙️ Environment Variables
 
 The project supports multiple environment modes:
+
 - **development** (`.env.development`) - Local development
 - **production** (`.env.production`) - Production deployment
 - **staging** (`.env.staging`) - Staging environment
