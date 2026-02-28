@@ -2,7 +2,7 @@
 
 A full-featured Twitter/X clone built with **Node.js + Express** (backend) and **React + Vite** (frontend), featuring real-time messaging, tweet management, media uploads, and user interactions.
 
-![System Architecture](images/nodejs-high-level-architecture.png)
+![System Architecture](images/nodejs-high-level-architecture.jpg)
 
 ---
 
